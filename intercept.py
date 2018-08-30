@@ -26,3 +26,28 @@ def get_posts():
         articles.append(new_article)
     
     return articles
+
+
+def create_files(articles: list):
+    for article in articles:
+        with open(article["filename"], "wb") as f:
+            f.write(b"<head><meta charset='utf-8'></head>")
+            f.write(b"<h1>")
+            f.write(article["title"].encode("utf-8"))
+            f.write(b"</h1>")
+            f.write(b"<div>")
+            f.write(b"<b>Author:</b> ")
+            f.write(article["author"].encode("utf-8"))
+            f.write(b"<br>")
+            f.write(b"<b>Categories:</b> ")
+            for i, category in enumerate(article["tags"]):
+                f.write(category.term.encode("utf-8"))
+                if i != len(article["tags"]) - 1:
+                    f.write(b", ")
+            f.write(b"<br>")
+            f.write(b"<b>Published:</b> ")
+            f.write(article["published"].encode("utf-8"))
+            f.write(b"</div>")
+            f.write(b"<article>")
+            f.write(article["content"].encode("utf-8"))
+            f.write(b"</article>")
