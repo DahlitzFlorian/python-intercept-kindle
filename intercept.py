@@ -1,6 +1,7 @@
 import requests
 import feedparser
 import os
+from datetime import datetime
 
 
 def get_articles() -> list:
@@ -12,6 +13,13 @@ def get_articles() -> list:
 
     articles = []
     for entry in rss.entries:
+        date = datetime.strptime(entry.published, "%a, %d %b %Y %H:%M:%S +%f")
+        date = str(date.year) + str(date.month) + str(date.day)
+        today = datetime.today()
+        today = str(today.year) + str(today.month) + str(today.day)
+        if date != today:
+            continue
+        
         new_article = {}
         new_article["title"] = entry.title
         new_article["author"] = entry.author
