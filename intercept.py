@@ -1,4 +1,3 @@
-from bs4 import BeautifulSoup
 import requests
 import feedparser
 import os
@@ -13,8 +12,6 @@ def get_articles() -> list:
 
     articles = []
     for entry in rss.entries:
-        soup = BeautifulSoup(entry.summary, "html.parser")
-        
         new_article = {}
         new_article["title"] = entry.title
         new_article["author"] = entry.author
