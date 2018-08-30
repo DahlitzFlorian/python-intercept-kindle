@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import feedparser
+import os
 
 
 def get_articles() -> list:
@@ -34,7 +35,11 @@ def create_files(articles: list) -> None:
     to the file system
     """
     for article in articles:
-        with open(article["filename"], "wb") as f:
+        if not os.path.exists("tmp"):
+            os.mkdir("tmp")
+        
+        path = "tmp\\" + article["filename"]
+        with open(path, "wb") as f:
             f.write(b"<head><meta charset='utf-8'></head>")
             f.write(b"<h1>")
             f.write(article["title"].encode("utf-8"))
