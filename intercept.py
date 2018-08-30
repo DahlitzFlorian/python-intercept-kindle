@@ -29,6 +29,10 @@ def get_articles() -> list:
 
 
 def create_files(articles: list) -> None:
+    """
+    Creates the HTML-files based on the list of articles and saves them
+    to the file system
+    """
     for article in articles:
         with open(article["filename"], "wb") as f:
             f.write(b"<head><meta charset='utf-8'></head>")
