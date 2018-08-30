@@ -24,7 +24,7 @@ def get_articles() -> list:
         new_article["title"] = entry.title
         new_article["author"] = entry.author
         new_article["tags"] = entry.tags
-        new_article["published"] = entry.published
+        new_article["published"] = entry.published[:-6]
         new_article["content"] = entry.content[0].value
 
         new_article["filename"] = entry.title + ".html"
