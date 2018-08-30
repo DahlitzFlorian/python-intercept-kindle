@@ -52,6 +52,6 @@ def send_files():
                 cwd="tmp", shell=True)
         
     print("Files were send.")
-    print("="*40)
-    print("INFORMATION: Deletion has to be done by hand!")
-    print("="*40)
+    print("Delete tmp directory...")
+    shutil.rmtree("tmp")
+    print("Deletion was successful.")
