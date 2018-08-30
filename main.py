@@ -6,6 +6,7 @@ def main():
     articles = intercept.get_articles()
     intercept.create_files(articles)
     kindle.convert_files()
+    kindle.set_author()
     kindle.send_files()
 
 

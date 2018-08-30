@@ -35,6 +35,20 @@ def convert_files():
         
     print("-"*40)
     print("Convertion was successful.")
+
+
+def set_author():
+    if flag:
+        return
+    
+    print("Set author to \"The Intercept\"...")
+    path = Path("tmp")
+    files = path.iterdir()
+
+    for file in files:
+        if file.is_file() and file.name.endswith("mobi"):
+            subprocess.run(["ebook-meta", file.name, "-a", "The Intercept"],
+                cwd="tmp", shell=True)
     
 
 def send_files():

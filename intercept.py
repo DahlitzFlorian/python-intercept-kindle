@@ -27,7 +27,7 @@ def get_articles() -> list:
         new_article["published"] = entry.published
         new_article["content"] = entry.content[0].value
 
-        new_article["filename"] = "IC - " + entry.title + ".html"
+        new_article["filename"] = entry.title + ".html"
 
         articles.append(new_article)
     
