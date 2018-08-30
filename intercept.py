@@ -3,7 +3,7 @@ import requests
 import feedparser
 
 
-def get_articles():
+def get_articles() -> list:
     """
     Returns a list containing the latest articles from The Intercept
     """
@@ -28,7 +28,7 @@ def get_articles():
     return articles
 
 
-def create_files(articles: list):
+def create_files(articles: list) -> None:
     for article in articles:
         with open(article["filename"], "wb") as f:
             f.write(b"<head><meta charset='utf-8'></head>")
