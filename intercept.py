@@ -3,9 +3,9 @@ import requests
 import feedparser
 
 
-def get_posts():
+def get_articles():
     """
-    Returns a dict containing the latest medium posts of the specified user
+    Returns a list containing the latest articles from The Intercept
     """
     page = requests.get("https://theintercept.com/feed/?lang=en")
     rss = feedparser.parse(page.content)
